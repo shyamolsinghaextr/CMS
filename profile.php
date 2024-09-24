@@ -1,21 +1,17 @@
-<?php include 'components/head.php';?>
-<?php include 'components/navbar.php';?>
-<?php include 'components/sitebar.php';?>
-
 <?php 
 
+	include 'components/head.php';
+	include 'components/navbar.php';
+	include 'components/sitebar.php';
+	
 	session_start();
 	require_once('db_connection.php');
 	
 	
-	$sql = "SELECT * FROM users WHERE id = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, 'i', $_SESSION['UserID']);
-    mysqli_stmt_execute($stmt);
-    $user = mysqli_stmt_get_result($stmt);
-	$user = mysqli_fetch_all($user, MYSQLI_ASSOC);
-	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
+	$userID = $_SESSION['UserID'];
+	$sql = "SELECT * FROM users WHERE id = '$userID'"; 
+	$result = mysqli_query($conn, $sql); 
+	$user = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	
 	foreach($user as $user_data) {
 		echo $user_data['id'].'<br>';
@@ -27,7 +23,6 @@
 		echo $user_data['gender'].'<br>';
 		echo $user_data['password'].'<br>';
 	}
+	
+	include 'components/footer.php';
 ?>
-
-
-<?php include 'components/footer.php';?>
