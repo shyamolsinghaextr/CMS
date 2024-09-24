@@ -1,10 +1,8 @@
-<?php
-session_start();
+<?php include 'components/head.php';?>
+<?php include 'components/navbar.php';?>
+<?php include 'components/sitebar.php';?>
+	
+	<center> this is dashboard</center>
 
-if(isset($_SESSION["Login"])){
-	echo "ok";
-}
-else{
-	header("Location: index.php");
-}
-?>
+
+<?php include 'components/footer.php';?>
