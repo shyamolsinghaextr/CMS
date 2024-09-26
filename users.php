@@ -1,6 +1,10 @@
-<?php include 'components/head.php';?>
-<?php include 'components/navbar.php';?>
-<?php include 'components/sitebar.php';?>
+<?php 
+
+include 'components/head.php';
+include 'components/navbar.php';
+include 'components/sitebar.php';
+
+?>
 
 <!-- Main Content Area -->
     <div class="flex-grow-1 p-3">
