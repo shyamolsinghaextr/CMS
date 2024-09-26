@@ -1,3 +1,8 @@
+<?php
+  require_once('db_connection.php');
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +17,9 @@
 <body>
   <?php
   
-  session_start();
-  
   if(isset($_SESSION["Login"])){
 	  header("Location: dashboard.php");
   }
-  
-  require_once('db_connection.php');
   
     $error = "";
     $success = "";
@@ -109,6 +110,6 @@
         </div>
       </section>
 
-    <script src="Assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

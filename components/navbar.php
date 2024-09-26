@@ -7,16 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://localhost/CMS/profile.php">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php logout(); ?>">Logout</a>
+                    <a class="nav-link" href="http://localhost/CMS/logout.php">LogOut</a>
 					
                 </li>
             </ul>

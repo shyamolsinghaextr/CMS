@@ -1,28 +1,59 @@
 <?php 
-
+	session_start();
+	require_once('db_connection.php');
 	include 'components/head.php';
 	include 'components/navbar.php';
 	include 'components/sitebar.php';
 	
-	session_start();
-	require_once('db_connection.php');
-	
-	
 	$userID = $_SESSION['UserID'];
 	$sql = "SELECT * FROM users WHERE id = '$userID'"; 
 	$result = mysqli_query($conn, $sql); 
-	$user = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	
-	foreach($user as $user_data) {
-		echo $user_data['id'].'<br>';
-		echo $user_data['name'].'<br>';
-		echo $user_data['username'].'<br>';
-		echo $user_data['address'].'<br>';
-		echo $user_data['email'].'<br>';
-		echo $user_data['phone'].'<br>';
-		echo $user_data['gender'].'<br>';
-		echo $user_data['password'].'<br>';
-	}
-	
-	include 'components/footer.php';
+	$user_data = mysqli_fetch_assoc($result);
 ?>
+
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2>User Profile</h2>
+        </div>
+        <div class="card-body">
+                <div class="row mb-3">
+                    <label class="col-sm-3 fw-bold">ID:</label>
+                    <div class="col-sm-9"><?php echo $user_data['id']; ?></div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 fw-bold">Name:</label>
+                    <div class="col-sm-9"><?php echo $user_data['name']; ?></div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 fw-bold">Username:</label>
+                    <div class="col-sm-9"><?php echo $user_data['username']; ?></div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 fw-bold">Address:</label>
+                    <div class="col-sm-9"><?php echo $user_data['address']; ?></div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 fw-bold">Email:</label>
+                    <div class="col-sm-9"><?php echo $user_data['email']; ?></div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 fw-bold">Phone:</label>
+                    <div class="col-sm-9"><?php echo $user_data['phone']; ?></div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 fw-bold">Gender:</label>
+                    <div class="col-sm-9"><?php echo $user_data['gender']; ?></div>
+                </div>
+				
+				<div class="text-center">
+					<a href='profile_edit.php' class="btn btn-primary">Profile Edit</a>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+<?php include 'components/footer.php';?>
